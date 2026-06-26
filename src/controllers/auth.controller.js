@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const User = require('../config/models/user.model');
+const { sendRegistrationEmail } = require('../services/email.services');
 
 async function register(req, res) {
   try {
@@ -14,6 +15,7 @@ async function register(req, res) {
         password: req.body.password,
         username: req.body.username
     });
+    await sendRegistrationEmail(user.email, user.username);
     res.status(201).json({ message: 'User registered successfully', user });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -23,7 +25,7 @@ async function register(req, res) {
 async function login(req, res) {
   try {
     const { username, password } = req.body;
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ username }).select('+password');
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
