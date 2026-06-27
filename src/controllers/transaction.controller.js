@@ -1,7 +1,7 @@
-const transactionModel = require("../config/models/transaction.model")
-const ledgerModel = require("../config/models/ledger.model")
-const accountModel = require("../config/models/account.model")
-const emailService = require("../services/email.services")
+const transactionModel = require("../models/transaction.model")
+const ledgerModel = require("../models/ledger.model")
+const accountModel = require("../models/account.model")
+const emailService = require("../services/email.service")
 const mongoose = require("mongoose")
 
 /**

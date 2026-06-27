@@ -1,7 +1,7 @@
-const userModel = require("../config/models/user.model")
+const userModel = require("../models/user.model")
 const jwt = require("jsonwebtoken")
-const emailService = require("../services/email.services")
-const tokenBlackListModel = require("../config/models/blackList.model")
+const emailService = require("../services/email.service")
+const tokenBlackListModel = require("../models/blackList.model")
 
 /**
 * - user register controller

@@ -1,6 +1,6 @@
-const userModel = require("../config/models/user.model")
+const userModel = require("../models/user.model")
 const jwt = require("jsonwebtoken")
-const tokenBlackListModel = require("../config/models/blackList.model")
+const tokenBlackListModel = require("../models/blackList.model")
 
 
 
